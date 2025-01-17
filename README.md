@@ -28,7 +28,7 @@ To get started with the project, follow the steps below:
         $ bundle exec overcommit --install
 ## Testing
 
-- We are using rspec-rails for the purpose of testing. To execute test cases, run the following command:
+- Using rspec-rails for the purpose of testing. To execute test cases, run the following command:
    ```shell
    $ bundle exec rspec
 
@@ -132,3 +132,7 @@ One way of creating order is through seed file as described below:
       - promotions:
          - '2for1-salami-small'
 
+# Author
+
+- **Name:** Azfar Syal
+- **Portfolio:** [www.azfarsyal.com](www.azfarsyal.com)
