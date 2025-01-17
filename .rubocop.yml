@@ -1,0 +1,6 @@
+AllCops:
+  Exclude:
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'bin/{rails,rake,setup}'
+  NewCops: enable

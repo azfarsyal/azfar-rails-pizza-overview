@@ -1,0 +1,7 @@
+en:
+  orders:
+    update_success: 'Order status updated successfully.'
+  records:
+    not_found: 'Record not found.'
+    update_failure: 'Failed to update record.'
+
