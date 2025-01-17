@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RailsPizzaOverview</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+  </head>
+
+  <body>
+    <% flash.each do |key, value| %>
+      <div class="alert alert-<%= key %>">
+        <%= value %>
+      </div>
+    <% end %>
+
+    <%= yield %>
+  </body>
+
+  <style>
+    .alert{
+      border: 2px solid;
+      text-align: center;
+    }
+    .alert-notice{
+      background-color: #c6e6c6;
+    }
+    .alert-alert {
+      background-color: #ffc3c3;
+    }
+  </style>
+</html>

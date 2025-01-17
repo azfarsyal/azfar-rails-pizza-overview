@@ -1,0 +1,37 @@
+<h1>Orders</h1>
+<% @orders.each do |order| %>
+  <hr>
+  <div class="order" style="display: flex;">
+    <div class="order-header" style="width: 40%;">
+      ID: <%= order.id %> <br>
+      Created: <%= formatted_date_time(order.created_at) %><br>
+      Promotion Codes: <%= display_promotions(order.promotions) %><br>
+      Discount Code: <%= order.discount&.name %><br>
+      Total Price: <%= order[:total_price] %>€<br>
+      <%= form_with(model: order, url: order_path(order), method: :patch) do |f| %>
+        <%= f.hidden_field :status, value: :completed %>
+        <%= f.submit 'Complete' %>
+      <% end %>
+    </div>
+    <div class="order-header" style="width: 60%;">
+      <% if order.pizzas.present? %>
+        <span>Items:</span>
+      <% end %>
+      <% order.pizzas.each do |pizza| %>
+        <ul class="order-item">
+          <li><%= "#{pizza.flavour.name&.capitalize} (#{pizza.size.name&.capitalize})" %></li>
+          <ul>
+            <% added_ingredients = pizza.pizza_ingredients.added_status(true) %>
+            <% removed_ingredients = pizza.pizza_ingredients.added_status(false) %>
+            <% if added_ingredients.present? %>
+              <li> Add: <%= display_pizza_ingredients(added_ingredients) %></li>
+            <% end %>
+            <% if removed_ingredients.present? %>
+              <li> Remove: <%= display_pizza_ingredients(removed_ingredients) %></li>
+            <% end %>
+          </ul>
+        </ul>
+      <% end %>
+    </div>
+  </div>
+<% end %>
